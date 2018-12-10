@@ -127,7 +127,7 @@ export default {
       if (this.async) this.query()
     },
     query: delayer(function () {
-      getJSON(this.async + this.value).then(data => {
+      getJSON(this.async + encodeURIComponent(this.value)).then(data => {
         this.items = (this.key ? data[this.key] : data).slice(0, this.limit)
         this.showDropdown = this.items.length
       })
